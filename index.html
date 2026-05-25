@@ -1,11 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>ARG TEST</title>
+<meta charset="UTF-8">
+<title>OBSERVATION NODE</title>
+
+<style>
+body {
+  background:#000;
+  color:#ddd;
+  font-family: monospace;
+  padding: 20px;
+}
+
+.glitch {
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  45% { opacity: 0.7; }
+  50% { opacity: 0.2; }
+  55% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+button {
+  background:black;
+  color:white;
+  border:1px solid white;
+  padding:10px;
+  margin:5px;
+}
+</style>
 </head>
+
 <body>
-  <h1 style="color:red">SYSTEM ONLINE</h1>
-  <p>ARG WORKING</p>
+
+<h2 class="glitch">SYSTEM: OBSERVATION NODE ACTIVE</h2>
+
+<div id="content">
+<p>我們正在同步你的輸入環境。</p>
+<p>請確認以下狀態：</p>
+
+<button onclick="q1()">我目前是獨自一人</button>
+<button onclick="q1()">我不確定</button>
+</div>
+
+<script>
+let stage = 0;
+
+function q1(){
+  document.getElementById("content").innerHTML = `
+    <p>已記錄。</p>
+    <p>你的反應時間偏慢。</p>
+    <p>我們注意到你沒有選擇「確定」選項。</p>
+
+    <button onclick="q2()">繼續</button>
+  `;
+}
+
+function q2(){
+  document.getElementById("content").innerHTML = `
+    <p>異常波動偵測中…</p>
+    <p class="glitch">你剛剛是否有注意到頁面閃爍？</p>
+
+    <button onclick="q3()">有</button>
+    <button onclick="q3()">沒有</button>
+  `;
+}
+
+function q3(){
+  document.getElementById("content").innerHTML = `
+    <p>記錄完成。</p>
+    <p class="glitch">我們其實不在測試你。</p>
+    <p>我們在確認你是否已經注意到我們。</p>
+
+    <p>如果你正在閱讀這行字，代表觀測已完成同步。</p>
+  `;
+}
+</script>
+
 </body>
 </html>

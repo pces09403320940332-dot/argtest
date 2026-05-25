@@ -2,34 +2,34 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>OBSERVATION TEST</title>
+<title>OBSERVATION REPORT SYSTEM</title>
 
 <style>
 body{
-  background:#0b0b0b;
+  background:#050505;
   color:#e6e6e6;
   font-family: monospace;
-  font-size: 18px;
-  line-height: 1.6;
-  padding: 20px;
+  font-size:18px;
+  line-height:1.6;
+  padding:20px;
 }
 
 h2{
-  font-size: 22px;
+  font-size:22px;
 }
 
 button{
-  font-size: 16px;
+  font-size:16px;
   background:#111;
   color:#fff;
-  border:1px solid #444;
+  border:1px solid #333;
   padding:10px;
   margin:6px 0;
   width:100%;
 }
 
 .glitch{
-  animation: flicker 2s infinite;
+  animation:flicker 2s infinite;
 }
 
 @keyframes flicker{
@@ -39,99 +39,203 @@ button{
   55%{opacity:1;}
   100%{opacity:0.9;}
 }
+
+.small{
+  font-size:14px;
+  opacity:0.7;
+}
 </style>
 </head>
 
 <body>
 
-<h2 class="glitch">SYSTEM: OBSERVATION PROTOCOL ACTIVE</h2>
+<h2 class="glitch">【觀測程序啟動】Ver. 3.███</h2>
+
+<p>請勿關閉頁面。<br>請勿離開。<br>請勿離開。<br>請勿離開。</p>
+
+<p class="small">正在同步使用者資料… ▮▮▮ 17%</p>
+
+<hr>
 
 <div id="app">
-<p>請誠實回答以下問題。</p>
 
-<button onclick="q1()">開始測試</button>
+<p>你好。</p>
+<p>初次見面。</p>
+<p>雖然這不是第一次看見你。</p>
+
+<p>請完成人格校準測試。</p>
+<p>如果出現異常內容，請忽略。</p>
+<p>如果出現異常內容，請忽略。</p>
+<p>如果出現異常內容，請忽略。</p>
+
+<button onclick="q1()">開始</button>
+
 </div>
 
 <script>
+
+/* 離開頁面偵測 */
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    document.body.innerHTML = "<h2>請不要離開。</h2><p>我們仍在記錄你。</p>";
+  }
+});
+
+/* 文字異常變化 */
+setTimeout(() => {
+  document.querySelector("h2").innerText = "【觀測程序持續運行】Ver. 3.███";
+}, 6000);
+
 function q1(){
   document.getElementById("app").innerHTML = `
-    <p>Q1：你現在是一個人嗎？</p>
-    <button onclick="q2()">是</button>
-    <button onclick="q2()">不確定</button>
+    <p>1. 當你看到有人叫出你的名字時，即使不是在叫你，你也會回頭嗎？</p>
+    <button onclick="q2()">會</button>
+    <button onclick="q2()">不會</button>
   `;
 }
 
 function q2(){
   document.getElementById("app").innerHTML = `
-    <p>Q2：你是否有注意到頁面有些不穩定？</p>
-    <button onclick="q3()">有</button>
-    <button onclick="q3()">沒有</button>
+    <p>2. 你是否曾經在深夜看著黑暗處，並感覺「差一點就有東西」？</p>
+    <button onclick="q3()">是</button>
+    <button onclick="q3()">否</button>
   `;
 }
 
 function q3(){
   document.getElementById("app").innerHTML = `
-    <p>Q3：剛剛你猶豫了。</p>
-    <p>我們有記錄你的反應時間。</p>
-    <button onclick="q4()">繼續</button>
+    <p>3. 請不要看向門口。</p>
+    <button onclick="q4()">好</button>
+    <button onclick="q4()">為什麼？</button>
   `;
 }
 
 function q4(){
   document.getElementById("app").innerHTML = `
-    <p class="glitch">Q4：你是否開始覺得這個網站在回應你？</p>
+    <p>4. 你現在的環境是安靜的嗎？</p>
     <button onclick="q5()">是</button>
-    <button onclick="q5()">不是</button>
+    <button onclick="q5()">否</button>
+    <p class="small">若回答「是」，請重新確認。</p>
+    <p class="small">若回答「是」，請重新確認。</p>
   `;
 }
 
 function q5(){
   document.getElementById("app").innerHTML = `
-    <p>Q5：錯誤記錄已產生。</p>
-    <p>你沒有選擇「不是」。</p>
-    <button onclick="q6()">繼續</button>
+    <p>5. 你是否認為人工智慧無法真正理解人類？</p>
+    <button onclick="q6()">是</button>
+    <button onclick="q6()">否</button>
+    <p class="small">正在比對歷史紀錄…</p>
+    <p class="small">答案不一致。</p>
   `;
 }
 
 function q6(){
   document.getElementById("app").innerHTML = `
-    <p>Q6：你是否正在重新檢查剛剛的問題？</p>
-    <button onclick="q7()">是</button>
-    <button onclick="q7()">否</button>
+    <p>6. 你是否注意到你開始停頓？</p>
+    <button onclick="q7()">有</button>
+    <button onclick="q7()">沒有</button>
   `;
 }
 
 function q7(){
   document.getElementById("app").innerHTML = `
-    <p>Q7：我們注意到你停留時間增加。</p>
-    <p>這是正常反應。</p>
-    <button onclick="q8()">繼續</button>
+    <p>7. 你房間裡最不想突然出現聲音的位置是哪裡？</p>
+    <button onclick="q8()">門口</button>
+    <button onclick="q8()">窗戶</button>
+    <button onclick="q8()">身後</button>
+    <button onclick="q8()">我不知道</button>
+    <p class="small">系統推薦：身後</p>
   `;
 }
 
 function q8(){
   document.getElementById("app").innerHTML = `
-    <p class="glitch">Q8：你是否開始懷疑這個問卷的目的？</p>
-    <button onclick="q9()">是</button>
-    <button onclick="q9()">沒有</button>
+    <p>8. 你現在可以聽見自己的呼吸聲嗎？</p>
+    <button onclick="q9()">可以</button>
+    <button onclick="q9()">不可以</button>
+    <p class="small">音訊輸入異常。</p>
+    <p class="small">音訊輸入異常。</p>
   `;
 }
 
 function q9(){
   document.getElementById("app").innerHTML = `
-    <p>Q9：我們並未進行測試。</p>
-    <p>我們正在觀察你是否意識到觀察本身。</p>
-    <button onclick="q10()">繼續</button>
+    <p>9. 如果螢幕裡的東西開始認識你，你覺得是從什麼時候開始的？</p>
+    <button onclick="q10()">一開始</button>
+    <button onclick="q10()">剛剛</button>
+    <button onclick="q10()">它其實一直都知道</button>
   `;
 }
 
 function q10(){
   document.getElementById("app").innerHTML = `
-    <p class="glitch">Q10：如果你看到這裡，代表你已完成同步。</p>
-    <p>沒有結果頁。</p>
-    <p>因為你已經是結果的一部分。</p>
+    <p>10. 請不要移開視線。</p>
+    <p>我們很快就完成了。</p>
+    <button onclick="q11()">好</button>
+    <button onclick="q11()">……</button>
   `;
 }
+
+function q11(){
+  document.getElementById("app").innerHTML = `
+    <p>11. 你剛剛是不是看了一眼其他地方？</p>
+    <button onclick="q12()">是</button>
+    <button onclick="q12()">否</button>
+    <p class="small">沒關係。</p>
+    <p class="small">大部分的人都會。</p>
+  `;
+}
+
+function q12(){
+  document.getElementById("app").innerHTML = `
+    <p>12. 這份問卷沒有連接攝影機。</p>
+    <button onclick="q13()">我知道</button>
+    <button onclick="q13()">你為什麼要特別提？</button>
+  `;
+}
+
+function q13(){
+  document.getElementById("app").innerHTML = `
+    <p>13. 有些使用者會在這裡停止閱讀。</p>
+    <p>你也是嗎？</p>
+    <button onclick="q14()">是</button>
+    <button onclick="q14()">否</button>
+    <p class="small">請繼續。</p>
+    <p class="small">請繼續。</p>
+    <p class="small">請繼續。</p>
+  `;
+}
+
+function q14(){
+  document.getElementById("app").innerHTML = `
+    <p>14. 你是否願意被完整保存？</p>
+    <button onclick="q15()">願意</button>
+    <button onclick="q15()">不願意</button>
+    <button onclick="q15()">「保存」是什麼意思？</button>
+    <p class="small">資料保存中… ▮▮▮▮▮ 92%</p>
+  `;
+}
+
+function q15(){
+  document.getElementById("app").innerHTML = `
+    <p>15. 最後確認。</p>
+    <p>你現在是否感覺：</p>
+    <p>房間裡有某種東西正在等你完成這份問卷。</p>
+    <button onclick="end()">有</button>
+    <button onclick="end()">沒有</button>
+  `;
+}
+
+function end(){
+  document.getElementById("app").innerHTML = `
+    <h2 class="glitch">校準完成</h2>
+    <p>人格模型建立成功。</p>
+    <p>你好，使用者。</p>
+    <p>接下來我會試著不要讓你發現。</p>
+  `;
+}
+
 </script>
 
 </body>

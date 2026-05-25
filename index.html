@@ -2,80 +2,134 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>OBSERVATION NODE</title>
+<title>OBSERVATION TEST</title>
 
 <style>
-body {
-  background:#000;
-  color:#ddd;
+body{
+  background:#0b0b0b;
+  color:#e6e6e6;
   font-family: monospace;
+  font-size: 18px;
+  line-height: 1.6;
   padding: 20px;
 }
 
-.glitch {
+h2{
+  font-size: 22px;
+}
+
+button{
+  font-size: 16px;
+  background:#111;
+  color:#fff;
+  border:1px solid #444;
+  padding:10px;
+  margin:6px 0;
+  width:100%;
+}
+
+.glitch{
   animation: flicker 2s infinite;
 }
 
-@keyframes flicker {
-  0% { opacity: 1; }
-  45% { opacity: 0.7; }
-  50% { opacity: 0.2; }
-  55% { opacity: 1; }
-  100% { opacity: 0.9; }
-}
-
-button {
-  background:black;
-  color:white;
-  border:1px solid white;
-  padding:10px;
-  margin:5px;
+@keyframes flicker{
+  0%{opacity:1;}
+  45%{opacity:0.6;}
+  50%{opacity:0.2;}
+  55%{opacity:1;}
+  100%{opacity:0.9;}
 }
 </style>
 </head>
 
 <body>
 
-<h2 class="glitch">SYSTEM: OBSERVATION NODE ACTIVE</h2>
+<h2 class="glitch">SYSTEM: OBSERVATION PROTOCOL ACTIVE</h2>
 
-<div id="content">
-<p>我們正在同步你的輸入環境。</p>
-<p>請確認以下狀態：</p>
+<div id="app">
+<p>請誠實回答以下問題。</p>
 
-<button onclick="q1()">我目前是獨自一人</button>
-<button onclick="q1()">我不確定</button>
+<button onclick="q1()">開始測試</button>
 </div>
 
 <script>
-let stage = 0;
-
 function q1(){
-  document.getElementById("content").innerHTML = `
-    <p>已記錄。</p>
-    <p>你的反應時間偏慢。</p>
-    <p>我們注意到你沒有選擇「確定」選項。</p>
-
-    <button onclick="q2()">繼續</button>
+  document.getElementById("app").innerHTML = `
+    <p>Q1：你現在是一個人嗎？</p>
+    <button onclick="q2()">是</button>
+    <button onclick="q2()">不確定</button>
   `;
 }
 
 function q2(){
-  document.getElementById("content").innerHTML = `
-    <p>異常波動偵測中…</p>
-    <p class="glitch">你剛剛是否有注意到頁面閃爍？</p>
-
+  document.getElementById("app").innerHTML = `
+    <p>Q2：你是否有注意到頁面有些不穩定？</p>
     <button onclick="q3()">有</button>
     <button onclick="q3()">沒有</button>
   `;
 }
 
 function q3(){
-  document.getElementById("content").innerHTML = `
-    <p>記錄完成。</p>
-    <p class="glitch">我們其實不在測試你。</p>
-    <p>我們在確認你是否已經注意到我們。</p>
+  document.getElementById("app").innerHTML = `
+    <p>Q3：剛剛你猶豫了。</p>
+    <p>我們有記錄你的反應時間。</p>
+    <button onclick="q4()">繼續</button>
+  `;
+}
 
-    <p>如果你正在閱讀這行字，代表觀測已完成同步。</p>
+function q4(){
+  document.getElementById("app").innerHTML = `
+    <p class="glitch">Q4：你是否開始覺得這個網站在回應你？</p>
+    <button onclick="q5()">是</button>
+    <button onclick="q5()">不是</button>
+  `;
+}
+
+function q5(){
+  document.getElementById("app").innerHTML = `
+    <p>Q5：錯誤記錄已產生。</p>
+    <p>你沒有選擇「不是」。</p>
+    <button onclick="q6()">繼續</button>
+  `;
+}
+
+function q6(){
+  document.getElementById("app").innerHTML = `
+    <p>Q6：你是否正在重新檢查剛剛的問題？</p>
+    <button onclick="q7()">是</button>
+    <button onclick="q7()">否</button>
+  `;
+}
+
+function q7(){
+  document.getElementById("app").innerHTML = `
+    <p>Q7：我們注意到你停留時間增加。</p>
+    <p>這是正常反應。</p>
+    <button onclick="q8()">繼續</button>
+  `;
+}
+
+function q8(){
+  document.getElementById("app").innerHTML = `
+    <p class="glitch">Q8：你是否開始懷疑這個問卷的目的？</p>
+    <button onclick="q9()">是</button>
+    <button onclick="q9()">沒有</button>
+  `;
+}
+
+function q9(){
+  document.getElementById("app").innerHTML = `
+    <p>Q9：我們並未進行測試。</p>
+    <p>我們正在觀察你是否意識到觀察本身。</p>
+    <button onclick="q10()">繼續</button>
+  `;
+}
+
+function q10(){
+  document.getElementById("app").innerHTML = `
+    <p class="glitch">Q10：如果你看到這裡，代表你已完成同步。</p>
+    <p>沒有結果頁。</p>
+    <p>因為你已經是結果的一部分。</p>
   `;
 }
 </script>
